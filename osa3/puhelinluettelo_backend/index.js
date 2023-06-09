@@ -73,7 +73,7 @@ app.post("/api/persons", (req, res) => {
             error: "name already exists in the phonebook"
         })
     }
-    person["req.body"] = id
+    person["id"] = id
     persons = persons.concat(person)
     res.json(person)
 })
