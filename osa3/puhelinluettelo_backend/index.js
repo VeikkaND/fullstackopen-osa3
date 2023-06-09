@@ -1,7 +1,13 @@
 const express = require("express")
+const morgan = require("morgan")
 const app = express()
 
 app.use(express.json())
+morgan.token("body", (req) => {return JSON.stringify(req.body)})
+
+app.use(morgan("tiny", {skip: req => {return req.method === "POST"}}))
+app.use(morgan(":method :url :status :res[content-length] - :response-time ms :body",
+ {skip: req => {return req.method !== "POST"}}))
 
 const PORT = 3001
 app.listen(PORT)
@@ -67,7 +73,7 @@ app.post("/api/persons", (req, res) => {
             error: "name already exists in the phonebook"
         })
     }
-    person["id"] = id
+    person["req.body"] = id
     persons = persons.concat(person)
     res.json(person)
 })
