@@ -18,7 +18,6 @@ app.use(cors())
 app.get("/api/persons", (req, res) => {
     Person.find({}).then(result => {
         res.json(result)
-        persons = result
     })
 })
 
@@ -44,9 +43,7 @@ app.get("/api/persons/:id", (req, res, next) => {
 app.delete("/api/persons/:id", (req, res) => {
     const id = req.params.id
     Person.findByIdAndRemove(id)
-        .then(result => {
-            res.status(204).end()
-        })
+        .then(res.status(204).end())
 })
 
 app.post("/api/persons", (req, res, next) => {
@@ -63,7 +60,7 @@ app.post("/api/persons", (req, res, next) => {
         .catch(error => next(error))
 })
 
-app.put("/api/persons/:id", (req, res, next) => {
+app.put("/api/persons/:id", (req, res) => {
     const id = req.params.id
     const updatedPerson = new Person(req.body)
 
