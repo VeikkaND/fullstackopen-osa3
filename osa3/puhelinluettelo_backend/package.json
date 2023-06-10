@@ -7,7 +7,7 @@
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:ui": "rd /s /q build && cd C:/Users/Veikka/Desktop/yliopisto/fullstackopen/fullstackopen/osa2/puhelinluettelo && npm run build && robocopy ./ C:/Users/Veikka/Desktop/yliopisto/fullstackopen/fullstackopen-osa3/osa3/puhelinluettelo_backend build /e"
+    "build:ui": "rd /s /q build && cd C:/Users/Veikka/Desktop/yliopisto/fullstackopen/fullstackopen/osa2/puhelinluettelo && npm run build && robocopy ./build C:/Users/Veikka/Desktop/yliopisto/fullstackopen/fullstackopen-osa3/osa3/puhelinluettelo_backend/build /s /e *.*"
   },
   "author": "",
   "license": "ISC",
